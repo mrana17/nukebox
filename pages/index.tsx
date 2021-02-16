@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Greetings from "../components/Greetings";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -10,6 +11,7 @@ export default function Home() {
       </Head>
       <main>
         <h1>Nukebox</h1>
+        <Greetings name="JAN" />
       </main>
     </div>
   );
