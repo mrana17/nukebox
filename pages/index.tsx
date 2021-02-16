@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Greetings from "../components/Greetings";
+import SongsElement from "../components/SongElement";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
@@ -9,10 +10,15 @@ export default function Home() {
         <title>Nukebox</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <h1>Nukebox</h1>
-        <Greetings name="JAN" />
-      </main>
+      <body>
+        <header>
+          <h1>Nukebox</h1>
+          <Greetings name="JAN" />
+        </header>
+        <main>
+          <SongsElement title="Titel" interpret="Interpret" />
+        </main>
+      </body>
     </div>
   );
 }
