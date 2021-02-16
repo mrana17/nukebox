@@ -1,4 +1,8 @@
-html,
+:root {
+  --background-color: #1a2028;
+  --primary-text-color: #fff;
+  --secondary-text-color: #b8b8b8;
+}
 body {
   padding: 0;
   margin: 0;
