@@ -2,6 +2,7 @@
   --background-color: #1a2028;
   --primary-text-color: #fff;
   --secondary-text-color: #b8b8b8;
+  --song-background-color: linear-gradient(#e9c79b, #ffd700);
 }
 body {
   padding: 0;
