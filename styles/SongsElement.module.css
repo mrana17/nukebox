@@ -1,6 +1,27 @@
-.logo {
-  src: "../images/disc1.jpg";
-  alt: "logo";
-  width: 40px;
-  height: 40px;
+.SongsElement {
+  list-style: none;
+  display: grid;
+  grid-template: 1.5em 1.5em / 3em 1fr;
+  grid-template-areas:
+    "image title"
+    "image interpret";
+  grid-column-gap: 1em;
+  align-items: center;
+}
+
+.image {
+  grid-area: image;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.title {
+  grid-area: title;
+}
+
+.interpret {
+  grid-area: interpret;
+  color: var(--secondary-text-color);
 }

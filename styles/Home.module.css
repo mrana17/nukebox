@@ -2,3 +2,10 @@
   display: grid;
   padding: 1em;
 }
+
+.list {
+  margin: 0;
+  padding: 0;
+  display: grid;
+  row-gap: 1em;
+}

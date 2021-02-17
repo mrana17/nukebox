@@ -3,18 +3,15 @@ import styles from "../styles/SongsElement.module.css";
 type Props = {
   title: string;
   interpret: string;
+  imgSrc: string;
 };
 
-export default function SongsElement(props: Props) {
+export default function SongsElement({ imgSrc, title, interpret }: Props) {
   return (
-    <article>
-      <div>
-        <img />
-      </div>
-      <div>
-        <h3 className={styles.title}>{props.title}</h3>
-        <h5 className={styles.interpret}>{props.interpret}</h5>
-      </div>
-    </article>
+    <li className={styles.SongsElement}>
+      <img className={styles.image} src={imgSrc} />
+      <h3 className={styles.title}>{title}</h3>
+      <h5 className={styles.interpret}>{interpret}</h5>
+    </li>
   );
 }
