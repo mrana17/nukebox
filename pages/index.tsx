@@ -4,6 +4,7 @@ import Greetings from "../components/Greetings";
 import SongsElement from "../components/SongElement";
 import styles from "../styles/Home.module.css";
 import { APISong, getSongs } from "../utils/api";
+import Link from "next/link";
 
 export default function Home() {
   const [songs, setSongs] = useState<APISong[]>([]);
@@ -22,12 +23,16 @@ export default function Home() {
   }, []);
 
   const songsElements = songs.map((song) => (
-    <SongsElement
-      key={`${song.title}-${song.interpret}`}
-      imgSrc={song.imgSrc}
-      title={song.title}
-      interpret={song.interpret}
-    />
+    <Link href={`/songs/${song.id}`} key={song.id}>
+      <a>
+        <SongsElement
+          key={`${song.title}-${song.interpret}`}
+          imgSrc={song.imgSrc}
+          title={song.title}
+          interpret={song.interpret}
+        />
+      </a>
+    </Link>
   ));
   return (
     <div className={styles.container}>
