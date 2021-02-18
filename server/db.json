@@ -1,0 +1,28 @@
+{
+  "tracks": [
+    {
+      "id": "Changes-Tupac",
+      "imgSrc": "/disc1.jpg",
+      "title": "Changes",
+      "interpret": "TuPac"
+    },
+    {
+      "id": "HotInHere-Nelly",
+      "imgSrc": "/disc1.jpg",
+      "title": "Hot in Here",
+      "interpret": "Nelly"
+    },
+    {
+      "id": "INeedAGirl-P.Diddy",
+      "imgSrc": "/disc1.jpg",
+      "title": "I Need a Girl",
+      "interpret": "P.Diddy"
+    },
+    {
+      "id": "FamilyAffairs-MaryJBlidge",
+      "imgSrc": "/disc1.jpg",
+      "title": "Family Affairs",
+      "interpret": "Mary J Blidge"
+    }
+  ]
+}
