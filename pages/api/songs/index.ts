@@ -3,5 +3,5 @@ import { NextApiRequest, NextApiResponse } from "next";
 import db from "../../../server/db.json";
 
 export default (_req: NextApiRequest, res: NextApiResponse) => {
-  res.status(200).json(db.tracks);
+  res.status(200).json(db.songs);
 };

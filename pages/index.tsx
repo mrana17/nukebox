@@ -1,23 +1,25 @@
 import Head from "next/head";
+import { useEffect, useState } from "react";
 import Greetings from "../components/Greetings";
 import SongsElement from "../components/SongElement";
 import styles from "../styles/Home.module.css";
+import { APISong, getSongs } from "../utils/api";
 
 export default function Home() {
-  const songs = [
-    {
-      imgSrc: "/disc1.jpg",
-      title: "Changes",
-      interpret: "TuPac",
-    },
-    { imgSrc: "/disc1.jpg", title: "Hot in Here", interpret: "Nelly" },
-    { imgSrc: "/disc1.jpg", title: "I Need a Girl", interpret: "P.Diddy" },
-    {
-      imgSrc: "/disc1.jpg",
-      title: "Family Affairs",
-      interpret: "Mary J Blidge",
-    },
-  ];
+  const [songs, setSongs] = useState<APISong[]>([]);
+
+  useEffect(() => {
+    console.log("Homepage is mounted");
+    getSongs().then((newSongs) => {
+      setSongs(newSongs);
+    });
+
+    // alternative: async function doFetch() {
+    //   const newSongs = await getSongs();
+    //   setSongs(newSongs);
+    // }
+    // doFetch()
+  }, []);
 
   const songsElements = songs.map((song) => (
     <SongsElement
