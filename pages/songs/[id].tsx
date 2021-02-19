@@ -2,6 +2,9 @@ import { useRouter } from "next/Router";
 import { useEffect, useState } from "react";
 import { APISong, getSong } from "../../utils/api";
 import styles from "../../styles/SongPage.module.css";
+import SongDetails from "../../components/SongDetails";
+import AudioPlayer from "../../components/AudioPlayer";
+import HeaderNav from "../../components/HeaderNav";
 
 export default function Songs() {
   const router = useRouter();
@@ -24,11 +27,19 @@ export default function Songs() {
   }
   return (
     <div className={styles.container}>
-      <button className={styles.topButton}>⬅</button>
-      <h5>Now PLaying</h5>
-      <p>Title: {song.title}</p>
-      <p>Interpret: {song.interpret}</p>
-      <img className={styles.image} src={song.imgSrc} />
+      <header>
+        <HeaderNav />
+      </header>
+      <main>
+        <SongDetails
+          title={song.title}
+          interpret={song.interpret}
+          imgSrc={song.imgSrc}
+        />
+      </main>
+      <footer>
+        <AudioPlayer audio={song.audio} />
+      </footer>
     </div>
   );
 }

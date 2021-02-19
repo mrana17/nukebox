@@ -3,6 +3,7 @@ export type APISong = {
   imgSrc: string;
   title: string;
   interpret: string;
+  audio: string;
 };
 
 export async function getSongs() {
