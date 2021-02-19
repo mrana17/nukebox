@@ -1,6 +1,3 @@
-import { type } from "os";
-import songs from "../pages/api/songs";
-
 export type APISong = {
   id: string;
   imgSrc: string;
@@ -20,3 +17,9 @@ export async function getSongs() {
 //     .then((response) => response.json())
 //     .then(( songs: APISong[]) => songs);
 // }
+
+export async function getSong(id) {
+  const response = await fetch(`/api/songs/${id}`);
+  const song: APISong = await response.json();
+  return song;
+}
