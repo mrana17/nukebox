@@ -1,3 +1,13 @@
 .audioFigure {
-  background-color: var(--song-background-color);
+  display: grid;
+  justify-content: center;
+  gap: 0.5em;
+}
+
+.playerText {
+  text-align: center;
+}
+
+.AudioPlayer::-webkit-media-controls-panel {
+  background: var(--song-background-color);
 }

@@ -4,6 +4,7 @@ import { APISong, getSong } from "../../utils/api";
 import styles from "../../styles/SongPage.module.css";
 import SongDetails from "../../components/SongDetails";
 import AudioPlayer from "../../components/AudioPlayer";
+import HeaderNav from "../../components/HeaderNav";
 
 export default function Songs() {
   const router = useRouter();
@@ -27,8 +28,7 @@ export default function Songs() {
   return (
     <div className={styles.container}>
       <header>
-        <button className={styles.topButton}>⬅</button>
-        <h5>Now PLaying</h5>
+        <HeaderNav />
       </header>
       <main>
         <SongDetails

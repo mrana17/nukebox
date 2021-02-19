@@ -1,8 +1,10 @@
 .songDetails {
   list-style: none;
   display: grid;
-  align-items: center;
   text-align: center;
+  justify-items: center;
+  padding: 2em 1em;
+  gap: 0.5em;
 }
 
 .img {

@@ -2,9 +2,3 @@
   width: 20em;
   height: 20em;
 }
-
-.topButton {
-  color: var(--primary-text-color);
-  background-color: var(--background-color);
-  border: none;
-}
