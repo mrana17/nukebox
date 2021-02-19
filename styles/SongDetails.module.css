@@ -1,0 +1,16 @@
+.songDetails {
+  list-style: none;
+  display: grid;
+  align-items: center;
+  text-align: center;
+}
+
+.img {
+  width: 25em;
+  height: 25em;
+  border-radius: 10px;
+}
+
+.artist {
+  color: var(--secondary-text);
+}

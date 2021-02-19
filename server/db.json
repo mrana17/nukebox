@@ -4,25 +4,29 @@
       "id": "Changes-Tupac",
       "imgSrc": "/disc1.jpg",
       "title": "Changes",
-      "interpret": "TuPac"
+      "interpret": "TuPac",
+      "audio": "/TestSong.mp3"
     },
     {
       "id": "HotInHere-Nelly",
       "imgSrc": "/disc1.jpg",
       "title": "Hot in Here",
-      "interpret": "Nelly"
+      "interpret": "Nelly",
+      "audio": "/TestSong.mp3"
     },
     {
       "id": "INeedAGirl-P.Diddy",
       "imgSrc": "/disc1.jpg",
       "title": "I Need a Girl",
-      "interpret": "P.Diddy"
+      "interpret": "P.Diddy",
+      "audio": "/TestSong.mp3"
     },
     {
       "id": "FamilyAffairs-MaryJBlidge",
       "imgSrc": "/disc1.jpg",
       "title": "Family Affairs",
-      "interpret": "Mary J Blidge"
+      "interpret": "Mary J Blidge",
+      "audio": "/TestSong.mp3"
     }
   ]
 }
