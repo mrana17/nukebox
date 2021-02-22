@@ -10,16 +10,9 @@ export default function Home() {
   const [songs, setSongs] = useState<APISong[]>([]);
 
   useEffect(() => {
-    console.log("Homepage is mounted");
     getSongs().then((newSongs) => {
       setSongs(newSongs);
     });
-
-    // alternative: async function doFetch() {
-    //   const newSongs = await getSongs();
-    //   setSongs(newSongs);
-    // }
-    // doFetch()
   }, []);
 
   const songsElements = songs.map((song) => (
