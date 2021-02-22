@@ -16,7 +16,6 @@ export default function Songs() {
     if (typeof id !== "string") {
       return;
     }
-    console.log("Song");
     getSong(id).then((newSong) => {
       setSong(newSong);
     });
