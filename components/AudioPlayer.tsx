@@ -8,7 +8,7 @@ export default function AudioPlayer({ audio }: Props) {
   return (
     <figure className={styles.audioFigure}>
       <figcaption className={styles.playerText}> Listen to Music</figcaption>
-      <audio controls src={audio} className={styles.AudioPlayer}>
+      <audio controls src={audio} className={styles.audioPlayer}>
         Your browser does not support<code>Audio</code> element
       </audio>
     </figure>

@@ -8,6 +8,6 @@
   text-align: center;
 }
 
-.AudioPlayer::-webkit-media-controls-panel {
+.audioPlayer::-webkit-media-controls-panel {
   background: var(--song-background-color);
 }
