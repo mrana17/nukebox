@@ -9,7 +9,6 @@ import HeaderNav from "../../components/HeaderNav";
 export default function Songs() {
   const router = useRouter();
   const { id } = router.query;
-
   const [song, setSong] = useState<APISong>(null);
 
   useEffect(() => {

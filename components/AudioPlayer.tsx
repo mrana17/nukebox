@@ -1,5 +1,6 @@
 import { useRouter } from "next/Router";
 import { useEffect, useState } from "react";
+import useLocalStorage from "../hooks/useLocalsStorage";
 import styles from "../styles/AudioPlayer.module.css";
 
 type Props = {
@@ -9,33 +10,32 @@ type Props = {
 export default function AudioPlayer({ audio }: Props) {
   const router = useRouter();
   const { id } = router.query;
-  const [favorite, setFavorite] = useState(null);
-
-  useEffect(() => {
-    if (typeof id !== "string" || favorite === null) {
-      return;
-    }
-    if (favorite) {
-      localStorage.setItem("favoriteSong", id);
-    }
-    if (!favorite) {
-      localStorage.removeItem("favoriteSong");
-    }
-  }, [favorite]);
+  const [favoriteSongs, setFavoriteSongs] = useLocalStorage(
+    "favoriteSongs",
+    []
+  );
+  const favorite = favoriteSongs.includes(id);
 
   useEffect(() => {
     if (typeof id !== "string") {
       return;
     }
-    setFavorite(id === localStorage.getItem("favoriteSong"));
   }, [id]);
+
+  const handleFavoriteClick = () => {
+    if (favorite) {
+      const newFavoriteSongs = favoriteSongs.filter(
+        (favoriteSongs) => favoriteSongs !== id
+      );
+      setFavoriteSongs(newFavoriteSongs);
+    } else {
+      setFavoriteSongs([...favoriteSongs, id]);
+    }
+  };
 
   return (
     <figure className={styles.audioFigure}>
-      <button
-        className={styles.favoriteButton}
-        onClick={() => setFavorite(!favorite)}
-      >
+      <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
         {favorite ? "❤️" : "🖤"}
       </button>
       <figcaption className={styles.playerText}> Listen to Music</figcaption>
