@@ -5,6 +5,7 @@ import SongsElement from "../components/SongElement";
 import styles from "../styles/Home.module.css";
 import { APISong, getSongs } from "../utils/api";
 import Link from "next/link";
+import ViewsCount from "../components/ViewsCount";
 
 export default function Home() {
   const [songs, setSongs] = useState<APISong[]>([]);
@@ -35,6 +36,7 @@ export default function Home() {
       </Head>
       <h1>Nukebox</h1>
       <Greetings name="MARK" />
+      <ViewsCount />
       <ul className={styles.list}>{songsElements}</ul>
     </div>
   );
