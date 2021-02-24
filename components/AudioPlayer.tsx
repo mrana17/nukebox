@@ -10,6 +10,9 @@ type Props = {
 export default function AudioPlayer({ audio }: Props) {
   const router = useRouter();
   const { id: idQuery } = router.query;
+  if (!idQuery) {
+    return null;
+  }
   const id = typeof idQuery === "string" ? idQuery : idQuery[0];
   const [favoriteSongs, setFavoriteSongs] = useLocalStorage<string[]>(
     "favoriteSongs",
