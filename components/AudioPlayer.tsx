@@ -1,5 +1,6 @@
 import { useRouter } from "next/Router";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import useLocalStorage from "../hooks/useLocalsStorage";
 import styles from "../styles/AudioPlayer.module.css";
 
 type Props = {
@@ -8,36 +9,67 @@ type Props = {
 
 export default function AudioPlayer({ audio }: Props) {
   const router = useRouter();
-  const { id } = router.query;
-  const [favorite, setFavorite] = useState(null);
+  const { id: idQuery } = router.query;
+  if (!idQuery) {
+    return null;
+  }
+  const id = typeof idQuery === "string" ? idQuery : idQuery[0];
+  const [favoriteSong, setFavoriteSong] = useLocalStorage<string[]>(
+    "favoriteSongs",
+    []
+  );
+  const favorite = favoriteSong.includes(id);
+
+  const audioRef = useRef(new Audio(audio));
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioElement = audioRef.current;
+  const intervalRef = useRef<NodeJS.Timeout>();
+  const [progress, setProgress] = useState(0);
 
   useEffect(() => {
-    if (typeof id !== "string" || favorite === null) {
-      return;
+    if (isPlaying) {
+      audioElement.play();
+      intervalRef.current = setInterval(() => {
+        setProgress(audioElement.currentTime);
+      }, 2000);
+    } else {
+      clearInterval(intervalRef.current);
+      audioElement.pause();
     }
-    if (favorite) {
-      localStorage.setItem("favoriteSong", id);
-    }
-    if (!favorite) {
-      localStorage.removeItem("favoriteSong");
-    }
-  }, [favorite]);
+  }, [isPlaying]);
 
   useEffect(() => {
     if (typeof id !== "string") {
       return;
     }
-    setFavorite(id === localStorage.getItem("favoriteSong"));
   }, [id]);
+
+  const handleFavoriteClick = () => {
+    if (favorite) {
+      const newFavoriteSong = favoriteSong.filter(
+        (favoriteSongs) => favoriteSongs !== id
+      );
+      setFavoriteSong(newFavoriteSong);
+    } else {
+      setFavoriteSong([...favoriteSong, id]);
+    }
+  };
 
   return (
     <figure className={styles.audioFigure}>
-      <button
-        className={styles.favoriteButton}
-        onClick={() => setFavorite(!favorite)}
-      >
+      <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
         {favorite ? "❤️" : "🖤"}
       </button>
+      <button className={styles.btn} onClick={() => setIsPlaying(!isPlaying)}>
+        <img src={isPlaying ? "/pause.svg" : "/play.svg"} />
+      </button>
+      <input
+        className={styles.duration}
+        type="range"
+        min="0"
+        max={audioElement.duration}
+        value={progress}
+      />
       <figcaption className={styles.playerText}> Listen to Music</figcaption>
       <audio controls src={audio} className={styles.audioPlayer}>
         Your browser does not support<code>Audio</code> element

@@ -11,3 +11,15 @@
 .audioPlayer::-webkit-media-controls-panel {
   background: var(--song-background-color);
 }
+
+.btn {
+  background: var(--song-background-color);
+}
+
+.favoriteButton {
+  background: var(--song-background-color);
+}
+
+.duration {
+  background: var(--song-background-color);
+}
