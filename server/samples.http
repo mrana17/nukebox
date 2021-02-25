@@ -1,0 +1,8 @@
+### GET all tracks
+GET http://localhost:3000/api/songs
+
+### GET a single track
+GET http://localhost:3000/api/songs/Changes-Tupac
+
+### Delete a single track
+DELETE http://localhost:3000/api/songs/Changes-Tupac
