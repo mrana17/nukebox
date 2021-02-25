@@ -37,6 +37,9 @@ export default function Home() {
       <h1>Nukebox</h1>
       <Greetings name="MARK" />
       <ViewsCount />
+      <h1>Favorite Songs</h1>
+      <ul className={styles.list}></ul>
+      <h1>Songs</h1>
       <ul className={styles.list}>{songsElements}</ul>
     </div>
   );

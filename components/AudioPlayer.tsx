@@ -14,11 +14,11 @@ export default function AudioPlayer({ audio }: Props) {
     return null;
   }
   const id = typeof idQuery === "string" ? idQuery : idQuery[0];
-  const [favoriteSongs, setFavoriteSongs] = useLocalStorage<string[]>(
+  const [favoriteSong, setFavoriteSong] = useLocalStorage<string[]>(
     "favoriteSongs",
     []
   );
-  const favorite = favoriteSongs.includes(id);
+  const favorite = favoriteSong.includes(id);
 
   const audioRef = useRef(new Audio(audio));
   const [isPlaying, setIsPlaying] = useState(false);
@@ -46,12 +46,12 @@ export default function AudioPlayer({ audio }: Props) {
 
   const handleFavoriteClick = () => {
     if (favorite) {
-      const newFavoriteSongs = favoriteSongs.filter(
+      const newFavoriteSong = favoriteSong.filter(
         (favoriteSongs) => favoriteSongs !== id
       );
-      setFavoriteSongs(newFavoriteSongs);
+      setFavoriteSong(newFavoriteSong);
     } else {
-      setFavoriteSongs([...favoriteSongs, id]);
+      setFavoriteSong([...favoriteSong, id]);
     }
   };
 
