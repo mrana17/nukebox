@@ -18,3 +18,9 @@ export async function getSongs(): Promise<APISong[]> {
 export async function getSong(id: string): Promise<APISong> {
   return await fetchURL<APISong>(`/api/songs/${id}`);
 }
+
+export async function deleteSong(id: string) {
+  await fetch(`/api/songs/${id}`, {
+    method: "DELETE",
+  });
+}
