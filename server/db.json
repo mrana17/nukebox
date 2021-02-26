@@ -27,6 +27,13 @@
       "title": "Family Affairs",
       "interpret": "Mary J Blidge",
       "audio": "/TestSong.mp3"
+    },
+    {
+      "id": "a_b",
+      "title": "a",
+      "interpret": "b",
+      "imgSrc": "C:\\fakepath\\disc1.jpg",
+      "audio": "C:\\fakepath\\TestSong.mp3"
     }
   ]
 }
