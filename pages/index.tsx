@@ -5,6 +5,7 @@ import styles from "../styles/Home.module.css";
 import { APISong, getSongs } from "../utils/api";
 import ViewsCount from "../components/ViewsCount";
 import useLocalStorage from "../hooks/useLocalsStorage";
+import SongItemList from "../components/SongItemList";
 
 export default function Home() {
   const [songs, setSongs] = useState<APISong[]>([]);
@@ -47,9 +48,9 @@ export default function Home() {
       <Greetings name="MARK" />
       <ViewsCount />
       <h1>Favorite Songs</h1>
-      <ul className={styles.list}>{favoriteSongs}</ul>
+      <SongItemList items={favoriteSongs} />
       <h1>Songs</h1>
-      <ul className={styles.list}>{notFavoriteSongs}</ul>
+      <SongItemList items={notFavoriteSongs} />
     </div>
   );
 }

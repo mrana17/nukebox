@@ -5,7 +5,7 @@ type DB = {
   songs: APISong[];
 };
 
-const DB_PATH = "./sever/db.json";
+const DB_PATH = "./server/db.json";
 
 export async function readDb(): Promise<DB> {
   const dbJSON = await fs.readFile(DB_PATH, "utf-8");
