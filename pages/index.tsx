@@ -6,6 +6,7 @@ import { APISong, getSongs } from "../utils/api";
 import ViewsCount from "../components/ViewsCount";
 import useLocalStorage from "../hooks/useLocalsStorage";
 import SongItemList from "../components/SongItemList";
+import Link from "next/link";
 
 export default function Home() {
   const [songs, setSongs] = useState<APISong[]>([]);
@@ -51,6 +52,9 @@ export default function Home() {
       <SongItemList items={favoriteSongs} />
       <h1>Songs</h1>
       <SongItemList items={notFavoriteSongs} />
+      <Link href={"/addSongs"}>
+        <button> Add NEW Songs</button>
+      </Link>
     </div>
   );
 }
