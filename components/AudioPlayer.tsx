@@ -2,6 +2,7 @@ import { useRouter } from "next/Router";
 import { useEffect, useRef, useState } from "react";
 import useLocalStorage from "../hooks/useLocalsStorage";
 import styles from "../styles/AudioPlayer.module.css";
+import { deleteSong } from "../utils/api";
 
 type Props = {
   audio: string;
@@ -55,11 +56,17 @@ export default function AudioPlayer({ audio }: Props) {
     }
   };
 
+  const handleDeleteClick = async () => {
+    await deleteSong(id);
+    router.back();
+  };
+
   return (
     <figure className={styles.audioFigure}>
       <button className={styles.favoriteButton} onClick={handleFavoriteClick}>
         {favorite ? "❤️" : "🖤"}
       </button>
+      <button onClick={handleDeleteClick}>🗑</button>
       <button className={styles.btn} onClick={() => setIsPlaying(!isPlaying)}>
         <img src={isPlaying ? "/pause.svg" : "/play.svg"} />
       </button>

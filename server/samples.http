@@ -1,0 +1,23 @@
+### GET HTML of index page
+GET http://localhost:3000
+
+### GET all tracks
+GET http://localhost:3000/api/songs
+
+### GET a single track
+GET http://localhost:3000/api/songs/Changes-Tupac
+
+### Delete a single track
+DELETE http://localhost:3000/api/songs/Changes-Tupac
+
+### POST n new Song
+POST http://localhost:3000/api/songs
+Content-Type: application/json
+
+    {
+      "id": "Changes-Tupac",
+      "imgSrc": "/disc1.jpg",
+      "title": "Changes",
+      "interpret": "TuPac",
+      "audio": "/TestSong.mp3"
+    },

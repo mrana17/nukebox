@@ -1,14 +1,16 @@
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Greetings from "../components/Greetings";
-import SongsElement from "../components/SongElement";
 import styles from "../styles/Home.module.css";
 import { APISong, getSongs } from "../utils/api";
-import Link from "next/link";
 import ViewsCount from "../components/ViewsCount";
+import useLocalStorage from "../hooks/useLocalsStorage";
+import SongItemList from "../components/SongItemList";
+import Link from "next/link";
 
 export default function Home() {
   const [songs, setSongs] = useState<APISong[]>([]);
+  const [favoriteSongIds] = useLocalStorage<string[]>("favoriteSongs", []);
 
   useEffect(() => {
     getSongs().then((newSongs) => {
@@ -16,18 +18,27 @@ export default function Home() {
     });
   }, []);
 
-  const songsElements = songs.map((song) => (
-    <Link href={`/songs/${song.id}`} key={song.id}>
-      <a>
-        <SongsElement
-          key={`${song.title}-${song.interpret}`}
-          imgSrc={song.imgSrc}
-          title={song.title}
-          interpret={song.interpret}
-        />
-      </a>
-    </Link>
-  ));
+  // const songsElements = songs.map((song) => (
+  //   <Link href={`/songs/${song.id}`} key={song.id}>
+  //     <a>
+  //       <SongsElement
+  //         key={`${song.title}-${song.interpret}`}
+  //         imgSrc={song.imgSrc}
+  //         title={song.title}
+  //         interpret={song.interpret}
+  //       />
+  //     </a>
+  //   </Link>
+  // ));
+
+  const favoriteSongs = songs.filter((song) =>
+    favoriteSongIds.includes(song.id)
+  );
+
+  const notFavoriteSongs = songs.filter(
+    (song) => !favoriteSongIds.includes(song.id)
+  );
+
   return (
     <div className={styles.container}>
       <Head>
@@ -38,9 +49,12 @@ export default function Home() {
       <Greetings name="MARK" />
       <ViewsCount />
       <h1>Favorite Songs</h1>
-      <ul className={styles.list}></ul>
+      <SongItemList items={favoriteSongs} />
       <h1>Songs</h1>
-      <ul className={styles.list}>{songsElements}</ul>
+      <SongItemList items={notFavoriteSongs} />
+      <Link href={"/addSongs"}>
+        <button> Add NEW Songs</button>
+      </Link>
     </div>
   );
 }
